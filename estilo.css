@@ -83,16 +83,14 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 /* Abertura */
 .abertura { padding-block: clamp(1.5rem, 1rem + 2vw, 3.5rem) var(--bloco); }
-.abertura__grade { display: grid; gap: 2rem; align-items: center; }
-.abertura__foto { margin: 0; }
+.abertura__foto { margin: clamp(1.4rem, 1rem + 1.5vw, 2.2rem) 0 clamp(1.4rem, 1rem + 1.5vw, 2.2rem); }
 .moldura { position: relative; display: block; }
-.moldura img { aspect-ratio: 4 / 5; width: 100%; object-fit: cover; border-radius: var(--raio); }
+.moldura img { aspect-ratio: 4 / 5; width: 100%; object-fit: cover; object-position: 50% 28%; border-radius: var(--raio); }
 .moldura::after {           /* moldura dourada deslocada: o detalhe "chique" */
   content: ""; position: absolute; inset: 0; transform: translate(14px, 14px);
   border: 3px solid var(--ouro); border-radius: var(--raio); pointer-events: none; z-index: -1;
 }
 .manchete { font-size: var(--t-manchete); }
-.manchete + .sub { margin-top: 0.6em; }
 .sub { font-size: var(--t-grande); font-weight: 600; line-height: 1.2; color: var(--ouro-fundo); letter-spacing: -0.01em; text-wrap: balance; }
 .assinatura { margin-top: 1.6rem; font-weight: 500; color: var(--preto-suave); }
 .acoes { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2rem; }
@@ -104,6 +102,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .abertura__texto > :nth-child(2) { animation-delay: 90ms; }
 .abertura__texto > :nth-child(3) { animation-delay: 180ms; }
 .abertura__texto > :nth-child(4) { animation-delay: 270ms; }
+.abertura__texto > :nth-child(5) { animation-delay: 360ms; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .abertura__texto > * { animation: none; }
@@ -164,14 +163,13 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 /* Telas maiores */
 @media (min-width: 760px) {
+  .moldura img { aspect-ratio: 21 / 10; object-position: 50% 24%; }
   .frases { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
   .videos { grid-template-columns: repeat(2, 1fr); }
   .sobre { grid-template-columns: 5fr 7fr; gap: 3.5rem; }
   .rodape__linha { grid-template-columns: 1fr auto; align-items: baseline; }
 }
 @media (min-width: 980px) {
-  .abertura__grade { grid-template-columns: 7fr 5fr; gap: 4rem; }
-  .abertura__foto { order: 2; }
   .videos { grid-template-columns: repeat(3, 1fr); }
   .vida { grid-template-columns: repeat(4, 1fr); gap: 1.6rem; }
   .acoes .botao { flex: 0 1 auto; min-width: 260px; }
