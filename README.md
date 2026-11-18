@@ -33,4 +33,4 @@ Para testar no computador sem a Vercel, abra o `index.html` no navegador: a pág
 - Uma família de letra só (Bricolage Grotesque, Google Fonts), do corpo de 20 px ao título gigante. Corpo nunca abaixo de 20 px, botões com 64 px de altura.
 - Fundo bege dourado, texto preto, dourado em títulos de seção, botões e detalhes. Dourado de texto é o tom escuro `#8A6B12` (contraste 4,1:1 sobre o bege); o claro `#C9A227` só em botões (texto preto por cima) e traços.
 - Única animação: a entrada do título na abertura. Respeita `prefers-reduced-motion`.
-- Sem menu: o topo tem a marca e um link para os vídeos. Nada escondido atrás de ícone.
+- Sem cabeçalho nem menu: a abertura é a foto de borda a borda, com a assinatura em cima e a frase dentro da foto. Abaixo dela, as logos do YouTube e do Instagram em círculos dourados são os links.
