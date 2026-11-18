@@ -12,7 +12,7 @@ Briefing original: doc "Briefing Claude Code - Treino de Respeito" (Claude Docs)
 | Textos (título, frases, "Quem é o Alfredo", rodapé) | `index.html`, direto no texto |
 | Cores e tamanhos de letra | bloco `:root` no começo de `estilo.css` |
 
-As duas fotos atuais são **provisórias** (lancha vista de cima e halteres). Troque pelas do Alfredo e apague a legenda "Foto provisória…" do `index.html`.
+Fotos da seção "Não é só do corpo": `familia-mar.jpg`, `familia-casa.jpg`, `esposa-praia.jpg`, `bike.jpg` (todas 4:5, ~800×1000). As legendas ficam no `index.html`, logo abaixo de cada foto.
 
 ## Onde está publicado
 - Repositório: `ByTech-3/ByTech-3-treino-de-respeito` (branch `main`).

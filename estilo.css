@@ -91,7 +91,6 @@ ul { margin: 0; padding: 0; list-style: none; }
   content: ""; position: absolute; inset: 0; transform: translate(14px, 14px);
   border: 3px solid var(--ouro); border-radius: var(--raio); pointer-events: none; z-index: -1;
 }
-.abertura__foto figcaption { margin-top: 1.6rem; font-size: var(--t-mini); color: var(--preto-suave); }
 .manchete { font-size: var(--t-manchete); }
 .manchete + .sub { margin-top: 0.6em; }
 .sub { font-size: var(--t-grande); font-weight: 600; line-height: 1.2; color: var(--ouro-fundo); letter-spacing: -0.01em; text-wrap: balance; }
@@ -132,6 +131,12 @@ ul { margin: 0; padding: 0; list-style: none; }
 .sobre__texto .titulo { margin-bottom: 0.4rem; }
 .sobre__fecho { font-size: var(--t-grande); font-weight: 700; color: var(--ouro-fundo); line-height: 1.2; margin-top: 0.5rem; }
 
+/* Não é só do corpo: quatro fotos, mesma proporção, legenda curta */
+.vida { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem 1.2rem; }
+.vida figure { margin: 0; display: grid; gap: 0.6rem; }
+.vida img { aspect-ratio: 4 / 5; width: 100%; object-fit: cover; border-radius: var(--raio); }
+.vida figcaption { font-size: var(--t-mini); color: var(--preto-suave); line-height: 1.35; }
+
 /* Vídeos */
 .videos { display: grid; gap: 2.2rem 1.6rem; }
 .video { display: grid; gap: 0.7rem; text-decoration: none; }
@@ -168,5 +173,6 @@ ul { margin: 0; padding: 0; list-style: none; }
   .abertura__grade { grid-template-columns: 7fr 5fr; gap: 4rem; }
   .abertura__foto { order: 2; }
   .videos { grid-template-columns: repeat(3, 1fr); }
+  .vida { grid-template-columns: repeat(4, 1fr); gap: 1.6rem; }
   .acoes .botao { flex: 0 1 auto; min-width: 260px; }
 }
