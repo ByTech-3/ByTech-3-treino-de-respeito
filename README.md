@@ -14,10 +14,12 @@ Briefing original: doc "Briefing Claude Code - Treino de Respeito" (Claude Docs)
 
 As duas fotos atuais são **provisórias** (lancha vista de cima e halteres). Troque pelas do Alfredo e apague a legenda "Foto provisória…" do `index.html`.
 
-## Publicar na Vercel (de graça)
-1. Suba esta pasta num repositório do GitHub (ex.: `ByTech-3/treino-de-respeito`).
-2. Na Vercel: Add New Project → importe o repositório → Framework: **Other** → Deploy. Se a pasta do site não for a raiz do repositório, em **Root Directory** aponte para ela.
-3. Cada `git push` publica de novo. Domínio próprio: Settings → Domains.
+## Onde está publicado
+- Repositório: `ByTech-3/ByTech-3-treino-de-respeito` (branch `main`).
+- Vercel: projeto `treino-de-respeito` na equipe ByTech3, ligado ao repositório. **Cada push na `main` publica sozinho.**
+- Endereço: https://treino-de-respeito-bytech-3-projects.vercel.app
+- Domínio próprio, quando tiver: na Vercel, Settings → Domains.
+- O site está com `noindex` (linha no `index.html`) até o Alfredo aprovar. Depois, apague essa linha.
 
 Para testar no computador sem a Vercel, abra o `index.html` no navegador: a página inteira funciona, e os vídeos vêm por uma ponte pública (rss2json) em vez da função.
 
