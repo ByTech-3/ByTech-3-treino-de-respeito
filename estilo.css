@@ -1,0 +1,172 @@
+/* Treino de Respeito — estilo.
+   Ideia: uma revista de uma página só. Uma família de letra (Bricolage Grotesque) do corpo ao título gigante,
+   fundo bege dourado, preto para ler, dourado só em títulos, botões e detalhes. Nada se mexe sozinho,
+   exceto a entrada do título na abertura. */
+
+:root {
+  /* Cores */
+  --areia:        #F2E9D6;   /* fundo bege dourado claro */
+  --areia-funda:  #E7DABB;   /* faixas um tom abaixo */
+  --areia-linha:  #CDBB8E;   /* linhas finas */
+  --preto:        #15120D;   /* texto */
+  --preto-suave:  #4A4336;   /* texto secundário */
+  --ouro:         #C9A227;   /* botões, marca, detalhes */
+  --ouro-fundo:   #8A6B12;   /* dourado para texto grande sobre o bege (contraste 4,1:1) */
+  --ouro-escuro:  #A88419;   /* botão pressionado */
+
+  /* Letra */
+  --fonte: 'Bricolage Grotesque', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --t-mini:     1rem;
+  --t-corpo:    clamp(1.25rem, 1.1rem + 0.5vw, 1.4rem);     /* 20 a 22px */
+  --t-grande:   clamp(1.5rem, 1.15rem + 1.3vw, 2.2rem);
+  --t-titulo:   clamp(2.3rem, 1.5rem + 3vw, 4.2rem);
+  --t-manchete: clamp(2.9rem, 1.6rem + 6vw, 7rem);
+
+  /* Medidas */
+  --largura: 1200px;
+  --gutter-esq: max(20px, env(safe-area-inset-left, 0px));
+  --gutter-dir: max(20px, env(safe-area-inset-right, 0px));
+  --bloco: clamp(4rem, 3rem + 5vw, 8rem);  /* respiro entre seções */
+  --raio: 6px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--areia);
+  color: var(--preto);
+  font-family: var(--fonte);
+  font-size: var(--t-corpo);
+  line-height: 1.55;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+h1, h2, h3 { margin: 0; font-weight: 800; line-height: 1.02; letter-spacing: -0.025em; text-wrap: balance; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+:focus-visible { outline: 3px solid var(--preto); outline-offset: 4px; }
+
+.miolo {
+  width: 100%;
+  max-width: var(--largura);
+  margin-inline: auto;
+  padding-left: var(--gutter-esq);
+  padding-right: var(--gutter-dir);
+}
+
+/* Botões: grandes, com texto preto sobre dourado */
+.botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6em;
+  min-height: 64px; padding: 0.7em 1.6em;
+  border: 3px solid var(--ouro); border-radius: var(--raio);
+  background: var(--ouro); color: var(--preto);
+  font: inherit; font-weight: 700; font-size: var(--t-corpo);
+  text-decoration: none; cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+.botao:hover { background: var(--ouro-escuro); border-color: var(--ouro-escuro); }
+.botao:active { transform: translateY(1px); }
+.botao--vazado { background: transparent; color: var(--preto); border-color: var(--preto); }
+.botao--vazado:hover { background: var(--preto); border-color: var(--preto); color: var(--areia); }
+.botao svg { width: 1.2em; height: 1.2em; flex: none; }
+
+/* Topo */
+.topo { padding-block: 1.25rem; }
+.topo__linha { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.marca { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; font-weight: 800; font-size: clamp(1.05rem, 0.8rem + 1vw, 1.3rem); letter-spacing: -0.01em; white-space: nowrap; }
+.marca svg { width: 44px; height: 44px; flex: none; }
+.topo__link { font-weight: 700; font-size: clamp(1rem, 0.8rem + 0.8vw, 1.25rem); text-decoration: none; border-bottom: 3px solid var(--ouro); padding-bottom: 2px; white-space: nowrap; }
+.topo__link:hover { border-color: var(--preto); }
+
+/* Abertura */
+.abertura { padding-block: clamp(1.5rem, 1rem + 2vw, 3.5rem) var(--bloco); }
+.abertura__grade { display: grid; gap: 2rem; align-items: center; }
+.abertura__foto { margin: 0; }
+.moldura { position: relative; display: block; }
+.moldura img { aspect-ratio: 4 / 5; width: 100%; object-fit: cover; border-radius: var(--raio); }
+.moldura::after {           /* moldura dourada deslocada: o detalhe "chique" */
+  content: ""; position: absolute; inset: 0; transform: translate(14px, 14px);
+  border: 3px solid var(--ouro); border-radius: var(--raio); pointer-events: none; z-index: -1;
+}
+.abertura__foto figcaption { margin-top: 1.6rem; font-size: var(--t-mini); color: var(--preto-suave); }
+.manchete { font-size: var(--t-manchete); }
+.manchete + .sub { margin-top: 0.6em; }
+.sub { font-size: var(--t-grande); font-weight: 600; line-height: 1.2; color: var(--ouro-fundo); letter-spacing: -0.01em; text-wrap: balance; }
+.assinatura { margin-top: 1.6rem; font-weight: 500; color: var(--preto-suave); }
+.acoes { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2rem; }
+.acoes .botao { flex: 1 1 260px; }
+
+/* Entrada do título: a única animação da página */
+@keyframes subir { from { transform: translateY(16px); opacity: 0.35; } to { transform: none; opacity: 1; } }
+.abertura__texto > * { animation: subir 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.abertura__texto > :nth-child(2) { animation-delay: 90ms; }
+.abertura__texto > :nth-child(3) { animation-delay: 180ms; }
+.abertura__texto > :nth-child(4) { animation-delay: 270ms; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .abertura__texto > * { animation: none; }
+  .botao, .video__capa img { transition: none; }
+}
+
+/* Faixas e títulos de seção */
+.faixa { padding-block: var(--bloco); }
+.faixa--funda { background: var(--areia-funda); }
+.titulo { font-size: var(--t-titulo); }
+.titulo--ouro { color: var(--ouro-fundo); }
+.cabeca { display: grid; gap: 1rem; margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem); }
+.cabeca .titulo { max-width: 16ch; }
+.cabeca p { color: var(--preto-suave); max-width: 40ch; }
+
+/* O que a academia me ensinou: três frases grandes, cada uma com um traço dourado */
+.frases { display: grid; gap: 2.5rem; }
+.frase { padding-top: 1.2rem; border-top: 4px solid var(--ouro); font-size: var(--t-grande); font-weight: 600; line-height: 1.22; letter-spacing: -0.015em; text-wrap: pretty; }
+
+/* Quem é o Alfredo */
+.sobre { display: grid; gap: 2rem; align-items: start; }
+.sobre__foto { margin: 0; }
+.sobre__foto img { aspect-ratio: 4 / 5; width: 100%; object-fit: cover; border-radius: var(--raio); }
+.sobre__texto { display: grid; gap: 1.2rem; max-width: 60ch; }
+.sobre__texto .titulo { margin-bottom: 0.4rem; }
+.sobre__fecho { font-size: var(--t-grande); font-weight: 700; color: var(--ouro-fundo); line-height: 1.2; margin-top: 0.5rem; }
+
+/* Vídeos */
+.videos { display: grid; gap: 2.2rem 1.6rem; }
+.video { display: grid; gap: 0.7rem; text-decoration: none; }
+.video__capa { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--raio); background: var(--areia-funda); }
+.video__capa img { width: 100%; height: 100%; object-fit: cover; transition: transform 300ms ease; }
+.video:hover .video__capa img { transform: scale(1.03); }
+.video__play { position: absolute; left: 14px; bottom: 14px; width: 54px; height: 54px; border-radius: 50%; background: var(--ouro); }
+.video__play::after { content: ""; position: absolute; left: 21px; top: 16px; border-left: 18px solid var(--preto); border-top: 11px solid transparent; border-bottom: 11px solid transparent; }
+.video__titulo { font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
+.video:hover .video__titulo { text-decoration: underline; text-decoration-color: var(--ouro); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+.video__data { font-size: var(--t-mini); color: var(--preto-suave); }
+.estado { padding: 1.6rem; border: 3px dashed var(--areia-linha); border-radius: var(--raio); max-width: 60ch; }
+.videos-rodape { margin-top: 2.5rem; }
+
+/* Fechamento */
+.fecho { text-align: left; }
+.fecho .titulo { font-size: var(--t-manchete); }
+.fecho p { margin-top: 1rem; max-width: 40ch; }
+.fecho .acoes { max-width: 640px; }
+
+/* Rodapé */
+.rodape { padding-block: 2.5rem; border-top: 3px solid var(--ouro); font-size: var(--t-mini); color: var(--preto-suave); }
+.rodape__linha { display: grid; gap: 0.8rem; }
+.rodape strong { color: var(--preto); }
+
+/* Telas maiores */
+@media (min-width: 760px) {
+  .frases { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .videos { grid-template-columns: repeat(2, 1fr); }
+  .sobre { grid-template-columns: 5fr 7fr; gap: 3.5rem; }
+  .rodape__linha { grid-template-columns: 1fr auto; align-items: baseline; }
+}
+@media (min-width: 980px) {
+  .abertura__grade { grid-template-columns: 7fr 5fr; gap: 4rem; }
+  .abertura__foto { order: 2; }
+  .videos { grid-template-columns: repeat(3, 1fr); }
+  .acoes .botao { flex: 0 1 auto; min-width: 260px; }
+}
